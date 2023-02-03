@@ -1,0 +1,32 @@
+body {
+
+  }
+
+  .navbar {
+    background-color:#eee;
+    opacity: 0.9;
+  }
+    .navbar-brand {
+      font-weight: ;
+    font-size: 38px;
+    font-family: 'Bebas Neue', cursive;
+    }
+  .nav-link {
+
+  }
+  p.font-size-lg {
+  font-size: 20px;
+}
+.middle{
+  padding: 2%;
+}
+.bg-image {
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-opacity:0.2;
+}
+.fontt{
+  color: white;
+}

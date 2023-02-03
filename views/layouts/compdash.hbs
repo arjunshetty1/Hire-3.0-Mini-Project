@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/compdash.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Job Application Dashboard</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hire 3.0</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/process">Our Process</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="btn btn-danger" onclick="window.location='/logout'">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1>Job Application Dashboard</h1>
+        <br>
+        <table class="table table-striped" id="table-job-applications">
+            <thead>
+                <tr>
+                    <th>Developer Name</th>
+                    <th>Email</th>
+                    <th>Tech Skills</th>
+                    <th>Experience</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each developers}}
+                <tr id="row-1">
+                    <td>{{this.Dname}}</td>
+                    <td>{{this.Email}}</td>
+                    <td>{{this.Skills}}</td>
+                    <td>{{this.Experience}} years</td>
+                    <td>{{this.Location}}</td>
+                    </tr>
+{{/each}}
+</tbody>
+</table>
+</div>
+<script>
+    // Add event listener for update button
+    const updateButtons = document.querySelectorAll('.btn-update');
+    updateButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            // Get the selected status
+            const rowId = event.target.id.split('-')[1];
+            const select = document.querySelector(`#status-select-${rowId}`);
+            const selectedStatus = select.options[select.selectedIndex].value;
+            // Update the status in the backend
+            // ...
+            // Update the status in the table
+            const statusCell = event.target.parentNode.previousSibling;
+            statusCell.textContent = selectedStatus;
+        });
+    });
+
+    // Add event listener for delete button
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            // Delete the row from the backend
+            // ...
+            // Delete the row from the table
+            const rowId = event.target.id.split('-')[1];
+            const row = document.querySelector(`#row-${rowId}`);
+            row.remove();
+        });
+    });
+    // Add event listener for view resume button
+    const viewResumeButtons = document.querySelectorAll('#view-resume-1');
+    viewResumeButtons.forEach(button => {
+        button.addEventListener('click', event => {
+            // Show the resume in a modal or new tab
+            // ...
+        });
+    });
+
+</script>
+</body>
+</html>

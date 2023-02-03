@@ -1,0 +1,13 @@
+.navbar {
+  background-color:#eee;
+}
+  .navbar-brand {
+    font-weight: ;
+  font-size: 38px;
+  font-family: 'Bebas Neue', cursive;
+  }
+  #message {
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+  }

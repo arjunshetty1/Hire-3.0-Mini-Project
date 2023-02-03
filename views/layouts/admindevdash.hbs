@@ -1,0 +1,161 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #212529;
+    }
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+    .table tbody + tbody {
+      border-top: 2px solid #dee2e6;
+    }
+    .table .table {
+      background-color: #fff;
+    }
+    .navbar {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .navbar .nav-item {
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+     <a href="/" class="navbar-brand">Hire 3.0</a>
+     <div class="nav-item">
+       <a href="/" class="nav-link"><b>
+         This Dashboard Is Only For Admin</b></a>
+     </div>
+   </nav>
+
+   <div class="container mt-5">
+
+   </div>
+{{!-- 
+   <!-- Bootstrap JavaScript -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js" integrity="sha384-JLc/Pu+RkzVj+/pf6OjZR+BZTJX8TvTpKxqOdD+s2cM8wOzs0Q4IeOZC1cX8v4/" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> --}}
+
+
+  <div class="container mt-5">
+    <table class="company">
+      <h4> Companies</h4>
+      <thead>
+        <tr>
+          <th>Company Name</th>
+
+          <th>Details</th>
+
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+              {{#each companies}}
+        <tr class={{this.CEmail}}>
+          <td>{{this.CompanyName}}</td>
+
+          <td>
+            <ul>
+              <li>{{this.Website}}</li>
+              <li>{{this.CEmail}}</li>
+              <li>{{this.Phone}}</li>
+            </ul>
+          </td>
+
+          <td>
+            <button id={{this.CEmail}} onclick="approveCompany(event)" class="btn btn-success">Approve</button>
+            <button onclick="declineCompany()" class="btn btn-danger">Decline</button>
+          </td>
+       
+        </tr>
+              </tbody>
+          {{/each}}
+    </table>
+  </div>
+  {{!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js" integrity="sha384-JLc/Pu+RkzVj+/pf6OjZR+BZTJX8TvTpKxqOdD+s2cM8wOzs0Q4IeOZC1cX8v4/" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   --}}
+  <div class="container mt-5">
+    <table class="developers">
+      <h4>Developers</h4>
+      <thead>
+        <tr>
+          <th>Name</th>
+
+          <th>Details</th>
+          <th>Profile Send To</th>
+        </tr>
+      </thead>
+      {{#each developers}}
+      <tbody>
+
+        <tr class={{this.Email}}>
+          <td>{{this.DName}}</td>
+
+          <td>
+            <ul>
+              <li>{{this.Email}}</li>
+              <li>{{this.Phone}}</li>
+              <li>Test score:2/3</li>
+            </ul>
+          </td>
+          <td>  <form id={{this.Email}} onsubmit="sendCandidateData(event)">
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" class="form-control cname" id="companyName" placeholder="Enter company name">
+          <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+          </form></td>
+        </tr>
+      </tbody>
+      {{/each}}
+    </table>
+  </div>
+  {{!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.0/dist/umd/popper.min.js" integrity="sha384-JLc/Pu+RkzVj+/pf6OjZR+BZTJX8TvTpKxqOdD+s2cM8wOzs0Q4IeOZC1cX8v4/" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   --}}
+  <script>
+    function approveCompany(event){
+      console.log(event.target.id);
+      fetch(`/approve-comp?approve=1&email=${event.target.id}`);
+      document.getElementsByClassName(event.target.id)[0].remove();
+    }
+
+    function sendCandidateData(event){
+      event.preventDefault();
+      document.getElementsByClassName(event.target.id)[0].remove();
+      fetch(`/forwardapplicant?cname=${event.target.elements.companyName.value}&demail=${event.target.id}`)
+      //LOL
+      alert("Application forwarded.");
+//Abe faak. foreign key daalke rakha hain. Faaak.
+    }
+  </script>
+</body>
+</html>
